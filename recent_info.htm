@@ -1,0 +1,273 @@
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8" />
+<SCRIPT language=JavaScript src="hard_ln_io/klbase.js"></SCRIPT>
+<SCRIPT language=JavaScript src="hard_ln_io/klbase_en_de_str.js"></SCRIPT>
+<SCRIPT language=JavaScript src="hard_ln_io/klbase_date.js"></SCRIPT>
+<SCRIPT language=JavaScript src="hard_ln_io/klbase_wiki.js"></SCRIPT>
+<SCRIPT language=JavaScript src="recent_info/quote366_data.js"></SCRIPT>
+<SCRIPT language=JavaScript src="recent_info/bible366_data.js"></SCRIPT>
+<SCRIPT language=JavaScript src="recent_info/title.js"></SCRIPT>
+<SCRIPT language=JavaScript src="hard_ln_io/enwords.js"></SCRIPT>
+<script type="text/javascript">
+var recent_info_list=[];
+var default_datafile='recent_info/share_to_other_people_data.js';
+var cskeys=href_split_b(location.href);
+var datafile=default_datafile;
+if (cskeys.length>0){
+    if (cskeys[0]!==''){
+		datafile='archived/'+cskeys[0]+'.js';
+        document.title=cskeys[0];//+' - Info';
+	}
+    else {
+        if (recent_info_title_global[0].length>=3 && recent_info_title_global[0][1]!==""){
+            document.title=recent_info_title_global[0][1];
+        }
+        else {
+            document.title=recent_info_title_global[0][0];
+        }
+    }
+}
+
+var headline_size='2.5';
+for (var item of cskeys){
+    if (item.substring(0,10)=='font-size='){
+        headline_size=item.substring(10,);
+        break;
+    }
+}
+
+document.write('\n<SCRIPT language=JavaScript src="'+datafile+'"><\/SCRIPT>\n');
+
+var learning_list_global=[];
+var usera=navigator.userAgent.toLowerCase();
+if (usera.includes('android') || usera.includes('mobile')){
+	document.write("\n<style>\n");
+    document.write(":root {font-size:30px;}\n");
+    document.write("section {font-size:50px;line-height:150%;}\n");
+    document.write("</style>\n");
+}
+else{
+	document.write("\n<style>\n");
+    document.write(":root {font-size:16px;}\n");
+    document.write("section {font-size:16px;line-height:200%;}\n");
+    document.write("</style>\n");
+}
+document.write('\n<SCRIPT language=JavaScript src="learning_links/learning_links_data_'+Math.floor(Math.random()*12+1)+'.js"><\/SCRIPT>\n');
+</script>
+<style>
+img{max-width:100%;}
+.mini{font-size:0.75rem;margin:0px;padding:1px 0px 1px 0px;}
+a{text-decoration:none;}
+div.link_title{margin: 1.5rem 2.5rem 1.5rem 1.5rem;font-size:1.9rem;padding:1.5rem; border:0.1rem solid #c0c0c0;-webkit-border-radius: 1rem; -webkit-box-shadow: 0.3rem 0.3rem 0.3rem #c0c0c0;word-break:break-all;word-wrap:break-word;}
+section.code{overflow:auto;padding:1rem;border:0.1rem solid #c0c0c0;-webkit-border-radius: 1rem;max-height:30rem;background-color: #2e3436;line-height:140%;}
+section.text {overflow:auto;max-height:30rem;}
+
+.headline_on {
+    -webkit-animation: neonglow 10s infinite;
+    background-color:green;
+    padding:0.5rem 1rem;
+    font-size:1.5rem;
+    color:white;
+    -webkit-border-radius: 1rem;
+}
+
+@-webkit-keyframes neonglow {
+    20%, 70% {
+        color: #fff;
+        text-shadow: none;
+    }
+    25%, 50%, 75%, 95% {
+        color: #fff;
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff0, 0 0 30px #ff0;
+    }
+}
+
+</style>
+<link rel="shortcut icon" href="recent_info/recent_info.png" />
+</head>
+<body>
+<table id="table_title">
+<tr><td>
+<h2 style="margin:1rem 0rem;"><span id="span_title" class="headline_on"></span></h2>
+</td></tr>
+</table>
+<p class=mini id="p_links"><a href="index.htm">更多资讯</a>
+<a href="https://en.wikipedia.org/wiki/Special:Random" target=_blank>随机的Wikipedia页面</a>
+</p>
+<noscript><h1 style="color:red;">请在浏览器打开“原网页”</h1></noscript>
+<div id="divhtml"></div>
+<script type="text/javascript">
+if (recent_info_list.length==0){
+    document.getElementById('p_links').style.display='none';
+    let otable=document.getElementById('table_title');
+    otable.style.cssText="width:100%;height: 100%;background-color:black;";
+    document.querySelector('body').style.cssText="margin:0px;";
+    otable.querySelector('td').align="center";
+    otable.querySelector('td').valign="center";
+    otable.querySelector('h2').style.cssText="";
+    otable.querySelector('#span_title').style.cssText="font-size:"+headline_size+"rem;-webkit-border-radius: 0rem;";
+
+}
+if (datafile!==default_datafile){
+    let list_t=datafile.split('/');
+    if (list_t.length>0){
+        document.getElementById('span_title').innerText=list_t[1].split('.')[0];
+    }
+}
+else {
+    document.getElementById('span_title').innerText=recent_info_title_global[0][0];
+}
+
+function quotestr(list_t){
+    var blquote='';
+    for (item of list_t){
+        blquote=blquote+'<p style="font-size:1rem;color:black;">'+item+'</p>';
+    }
+    blquote='<div class="link_title">'+blquote+'</div>';
+    return blquote;
+}
+function codelink(){
+    var learn_something='';
+    if (learning_list_global.length>0){
+        learning_list_global.sort(randomsort_b);
+        learning_list_global[0].push("","随机编程知识点");
+        learn_something=title_href(learning_list_global[0]);
+    }
+    return learn_something;
+}
+
+function rndwords(){
+    var learn_something='';
+    if (enwords.length>0){
+        enwords.sort(randomsort_b);
+        var list_t=["","<span onclick=\"javascript:document.getElementById('div_rndwords').outerHTML=rndwords();\" style=\"cursor:pointer;\">随机单词</span>",""];
+        var bljg='';
+        var blxl=0;
+        for (var item of enwords){
+            bljg=bljg+'* <a href="http://dict.cn/'+item[0]+'" target=_blank style="color:blue;font-weight:600;text-decoration:underline;">'+item[0]+'</a> '+item[1]+' '+item[2]+'\n';
+            blxl=blxl+1;
+            if (blxl>=5){break;}
+        }
+        list_t[2]=bljg;
+        learn_something=title_href(list_t,'div_rndwords');
+    }
+    return learn_something;
+}
+
+function title_history(){
+    var bljg='';
+    for (var item of recent_info_title_global){
+        var str_t='';
+        for (var acol of item){
+            str_t=str_t+' '+acol;
+        }
+        bljg=bljg+title_href(['',str_t]);
+    }
+    document.getElementById('divhtml').innerHTML=bljg+'<p align=center class=mini>('+recent_info_title_global.length+')</p>';    
+}
+
+function title_href(item,csidname=''){
+    var bljg='';
+    var review='';
+    if (item[0]==''){
+        if (item[1]!==''){
+            bljg=bljg+'<font color=blue>'+item[1]+'</font> ';
+        }
+    }
+    else {
+        if (item[1]==''){
+            bljg=bljg+'<a href="'+item[0]+'" target=_blank>'+item[0]+'</a> ';
+        }
+        else {
+            bljg=bljg+'<a href="'+item[0]+'" target=_blank>'+item[1]+'</a> ';
+        }
+    }
+    if (item.length>=3){
+        if (item[2]!==""){
+            var blcontent=wiki_all_format_b(item[2]);
+            blcontent='<span style="font-size:1rem;">'+blcontent+'</span>';            
+            bljg=bljg+blcontent;
+        }
+    }
+    if (item.length>=4){
+        if (item[3]!==''){
+            review=wiki_all_format_b('{{span|t=l}}'+item[3]+'{{/span}}');
+            review='<span style="font-size:1rem;">'+review+'</span> ';            
+        }
+    }
+    bljg=review+bljg;
+    if (bljg!==''){
+        if (csidname!==''){
+            bljg='<div class="link_title" id="'+csidname+'">'+bljg+'</div>';
+        }
+        else {
+            bljg='<div class="link_title">'+bljg+'</div>';
+        }
+    }
+    return bljg;
+}
+
+var bljg='';
+var bljgtop='';
+var somesites=[
+['voachinese.com','voa'],
+['nytimes.com','nytimes'],
+];
+recent_info_list.reverse();
+var blxl=0;
+var codelink_done=false;
+var rndwords_done=false;
+for (var item of recent_info_list){
+    //console.log(item);
+    if (bljg.includes(item[0]) && item[0]!==""){continue;}
+    
+    for (var ahost of somesites){
+        if (item[0].includes(ahost[0])){
+            item[2]=item[2]+' ['+item[0]+' '+ahost[1]+']';
+            item[0]='';
+            break;
+        }
+    }
+    
+    if (item[1].substring(0,4)=='[置顶]'){
+        bljgtop=bljgtop+title_href(item);
+    }
+    else {
+        bljg=bljg+title_href(item);
+    }
+    blxl=blxl+1;
+    if (blxl==5 && datafile==default_datafile){
+        bljg=bljg+codelink();
+        codelink_done=true;
+    }
+    if (blxl==10 && datafile==default_datafile){
+        bljg=bljg+rndwords();
+        rndwords_done=true;
+    }    
+}
+bljg=bljgtop+bljg;
+if (datafile==default_datafile && codelink_done==false){
+    bljg=bljg+codelink();
+}
+if (datafile==default_datafile && rndwords_done==false){
+    bljg=bljg+rndwords();
+}
+var blquote='';
+if (datafile==default_datafile){
+    blquote=quotestr(quote366_global[day_of_year_b()-1])+quotestr(bible366_global[day_of_year_b()-1]);
+}
+
+if (bljg+blquote!==''){
+    document.getElementById('divhtml').innerHTML=bljg+blquote+'<p align=center class=mini>('+recent_info_list.length+') ver: 0.0.4-20190618 <span onclick="javascript:title_history();" style="cursor:pointer;color:blue;">Title History</span></p>';
+}
+</script>
+<!--history
+0.0.4-20190618
+0.0.3-20190402
+0.0.2-20190320
+0.0.1-20190318
+-->
+</body>
+</html>
