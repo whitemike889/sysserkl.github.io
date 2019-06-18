@@ -1,13 +1,18 @@
 function css_root_style(pcsize="16",mobilesize="30"){
     var usera=navigator.userAgent.toLowerCase();
+    document.write("\n<style>\n");
     if (usera.indexOf('android')>=0 || usera.indexOf('mobile')>=0){
-        document.write("\n<style>:root {font-size:"+mobilesize+"px;}\n");
+        document.write(":root {font-size:"+mobilesize+"px;}\n");
+        document.write("section {font-size:"+(parseInt(mobilesize)+20)+"px;line-height:150%;}\n");
         document.write("input[type=checkbox] {-moz-transform: scale(3); -webkit-transform: scale(3); margin:25px;}\n");
-        document.write("input[type=radio] {-moz-transform: scale(3); -webkit-transform: scale(3); margin:25px;}</style>\n");
+        document.write("input[type=radio] {-moz-transform: scale(3); -webkit-transform: scale(3); margin:25px;}\n");
+        
     }
     else{
-        document.write("\n<style>:root {font-size:"+pcsize+"px;}</style>\n");
+        document.write(":root {font-size:"+pcsize+"px;}\n");
+        document.write("section {font-size:"+pcsize+"px;line-height:200%;}\n");
     }
+    document.write("</style>\n");
 }
 
 function css_select_b(cslen=4,cstype='pc'){

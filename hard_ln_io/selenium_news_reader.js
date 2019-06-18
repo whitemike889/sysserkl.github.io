@@ -696,6 +696,14 @@ function sites_map(changetitle=false,csnumber=7){
         return bljg;
     }    
     //----------------------
+    var usera=navigator.userAgent.toLowerCase();
+    if (usera.indexOf('android')>=0 || usera.indexOf('mobile')>=0){
+        var lineheight='1.3';
+    }
+    else {
+        var lineheight='1.8';
+    }
+        
     var odiv=document.getElementById('divhtml2');
     //odiv.style.cssText='';
     var bljg='';
@@ -735,7 +743,7 @@ function sites_map(changetitle=false,csnumber=7){
                 bljg=bljg+sub_sites_map_count(blxl2);
                 bljg=bljg+'</p>';
             }
-            bljg=bljg+'<a name="sites_category_'+blxl+'"></a><p style="font-size:0.88rem;line-height:1.5rem;"><span style="font-weight:600;cursor:pointer;" title="批量打开" onclick="javascript:batch_open(this.parentNode);">'+category+'</span> ';
+            bljg=bljg+'<a name="sites_category_'+blxl+'"></a><p style="font-size:0.88rem;line-height:'+lineheight+'rem;"><span style="font-weight:600;cursor:pointer;" title="批量打开" onclick="javascript:batch_open(this.parentNode);">'+category+'</span> ';
             blxl2=0;
             select_str=select_str+'<option value="sites_category_'+blxl+'">'+category+'</option>\n';
         }

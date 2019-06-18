@@ -5,6 +5,7 @@
 <SCRIPT language=JavaScript src="hard_ln_io/klbase.js"></SCRIPT>
 <SCRIPT language=JavaScript src="hard_ln_io/klbase_en_de_str.js"></SCRIPT>
 <SCRIPT language=JavaScript src="hard_ln_io/klbase_date.js"></SCRIPT>
+<SCRIPT language=JavaScript src="hard_ln_io/klbase_css.js"></SCRIPT>
 <SCRIPT language=JavaScript src="hard_ln_io/klbase_wiki.js"></SCRIPT>
 <SCRIPT language=JavaScript src="recent_info/quote366_data.js"></SCRIPT>
 <SCRIPT language=JavaScript src="recent_info/bible366_data.js"></SCRIPT>
@@ -41,19 +42,21 @@ for (var item of cskeys){
 document.write('\n<SCRIPT language=JavaScript src="'+datafile+'"><\/SCRIPT>\n');
 
 var learning_list_global=[];
-var usera=navigator.userAgent.toLowerCase();
-if (usera.includes('android') || usera.includes('mobile')){
-	document.write("\n<style>\n");
-    document.write(":root {font-size:30px;}\n");
-    document.write("section {font-size:50px;line-height:150%;}\n");
-    document.write("</style>\n");
-}
-else{
-	document.write("\n<style>\n");
-    document.write(":root {font-size:16px;}\n");
-    document.write("section {font-size:16px;line-height:200%;}\n");
-    document.write("</style>\n");
-}
+//var usera=navigator.userAgent.toLowerCase();
+//if (usera.includes('android') || usera.includes('mobile')){
+	//document.write("\n<style>\n");
+    //document.write(":root {font-size:30px;}\n");
+    //document.write("section {font-size:50px;line-height:150%;}\n");
+    //document.write("</style>\n");
+//}
+//else{
+	//document.write("\n<style>\n");
+    //document.write(":root {font-size:16px;}\n");
+    //document.write("section {font-size:16px;line-height:200%;}\n");
+    //document.write("</style>\n");
+//}
+css_root_style('15','20');
+
 document.write('\n<SCRIPT language=JavaScript src="learning_links/learning_links_data_'+Math.floor(Math.random()*12+1)+'.js"><\/SCRIPT>\n');
 </script>
 <style>
@@ -68,7 +71,7 @@ section.text {overflow:auto;max-height:30rem;}
     -webkit-animation: neonglow 10s infinite;
     background-color:green;
     padding:0.5rem 1rem;
-    font-size:1.5rem;
+    font-size:2.5rem;
     color:white;
     -webkit-border-radius: 1rem;
 }
