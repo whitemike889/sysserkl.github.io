@@ -43,10 +43,18 @@ function inputvalue(csvalue){
 }
 
 function getvalue(csnumber){
-    if (csnumber < 0 || csnumber >= sudoku_data_global.length){
+    if (csnumber < 0 || csnumber > sudoku_data_global.length){
         return [];
     }
-    var list_t = sudoku_data_global[csnumber].split("");
+    if (csnumber == sudoku_data_global.length){
+        var list_t=[];
+        for (var blxl=1;blxl<=81;blxl++){
+            list_t.push("0");
+        }
+    }
+    else {
+        var list_t = sudoku_data_global[csnumber].split("");
+    }
     for (var blxl=0;blxl<list_t.length;blxl++){
         if (list_t[blxl]=='0'){
             var oinput=document.getElementById('input_'+blxl);
@@ -181,15 +189,17 @@ function branchs(csstr,do_select_value=true){
     while (true){
         var blvalue=check_sudoku(list_t);
         if (blvalue[0]==false){
-            //console.log(blvalue);
+            console.log(state_count_global,0,blvalue);
+            document.getElementById('span_state').innerHTML='<font color="red">✘</font>: '+blvalue[1];
             return blvalue;
         }
         
         var result_t=possible_values(list_t);
 
         var found=false;
-        console.log('1');
+
         //row 唯一 - 保留注释
+        console.log(state_count_global,'1.row');
         for (var blr=0;blr<9;blr++){
             var tmp_t=[];
             for (var blxl=0;blxl<=9;blxl++){
@@ -214,7 +224,13 @@ function branchs(csstr,do_select_value=true){
             }            
         }
         
+        //以下各个 found continue 必须保留，否则可能无法求解 - 保留注释
+        if (found){
+            continue;
+        }        
+        
         //col 唯一 - 保留注释
+        console.log(state_count_global,'1.col');        
         for (var blc=0;blc<9;blc++){
             var tmp_t=[];
             for (var blxl=0;blxl<=9;blxl++){
@@ -238,8 +254,13 @@ function branchs(csstr,do_select_value=true){
                 }
             }            
         }       
-       
+
+        if (found){
+            continue;
+        }
+        
         //block 唯一 - 保留注释
+        console.log(state_count_global,'1.block');        
         for (var blr=0;blr<3;blr++){
             for (var blc=0;blc<3;blc++){
                 var tmp_t=[];
@@ -271,7 +292,7 @@ function branchs(csstr,do_select_value=true){
             continue;
         }
         
-        console.log('2.1');
+        console.log(state_count_global,'2.1');
         
         for (var item of result_t){
             if (item[2].length==1){
@@ -284,7 +305,7 @@ function branchs(csstr,do_select_value=true){
             continue;
         }
         
-        console.log('2.2');
+        console.log(state_count_global,'2.2');
         for (var item of result_t){
             if (item[2].length==2){
                 var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
@@ -305,7 +326,7 @@ function branchs(csstr,do_select_value=true){
             continue;
         }        
         
-        console.log('2.3');
+        console.log(state_count_global,'2.3');
         for (var item of result_t){
             if (item[2].length==3){
                 var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
@@ -329,7 +350,7 @@ function branchs(csstr,do_select_value=true){
             continue;
         }
         
-        console.log('2.4');
+        console.log(state_count_global,'2.4');
         for (var item of result_t){
             if (item[2].length==4){
                 var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
@@ -358,7 +379,7 @@ function branchs(csstr,do_select_value=true){
 
         //select_value
         if (do_select_value){
-            console.log('3.2');
+            console.log(state_count_global,'3.2');
             for (var item of result_t){
                 if (item[2].length==2){
                     var value1=select_value(list_t.toString(),item[0]*9+item[1],item[2][0]);
@@ -381,7 +402,7 @@ function branchs(csstr,do_select_value=true){
                 continue;
             }
             
-            console.log('3.3');
+            console.log(state_count_global,'3.3');
             
             for (var item of result_t){
                 if (item[2].length==3){
@@ -413,6 +434,17 @@ function branchs(csstr,do_select_value=true){
     }
 
     return [true,list_t,result_t];
+}
+
+function getvalue_check(csnumber){
+    var list_t=getvalue(csnumber);
+    var bljg=check_sudoku(list_t);
+    if (bljg[0]){
+        document.getElementById('span_state').innerHTML='<font color="blue">✔</font>';
+    }
+    else {
+        document.getElementById('span_state').innerHTML='<font color="red">✘</font>: '+bljg[1];
+    }
 }
 
 function check_sudoku(list_t){
@@ -469,13 +501,9 @@ function check_sudoku(list_t){
     return [true,''];
 }
 
-function generate_sudoku(){
-
-}
-
 function input_range(){
     var bljg = "";
-    bljg='<input type="range" min=1 max='+sudoku_data_global.length+' value=1 id="sudoku_range" style="width:20rem;" oninput="javascript:document.getElementById(\'a_no\').innerHTML=\'第 \'+this.value+\' 题\';" onchange="javascript:show_sudoku(this.value-1);"> ';
+    bljg='<input type="range" min=1 max='+(sudoku_data_global.length+1)+' value=1 id="sudoku_range" style="width:20rem;" oninput="javascript:document.getElementById(\'a_no\').innerHTML=\'第 \'+this.value+\' 题\';" onchange="javascript:show_sudoku(this.value-1);"> ';
     bljg=bljg+'<a href="javascript:void(null);" id="a_no" onclick="javascript:show_sudoku(parseInt(this.innerText.split(\' \')[1])-1);">第 1 题</a>';
 
     document.getElementById("klsudokuno").innerHTML = '<p align=center>'+bljg+'</p>';
@@ -488,12 +516,157 @@ function rnd_sudoku(){
     show_sudoku(rndnumber);
 }
 
-function show_sudoku(csnumber){
-	if (csnumber < 0 || csnumber >= sudoku_data_global.length){return;}
-    td_no_global='';
+function console_sudoku(cslist){
+    var bljg='';
+    console.log('=====================');
+    for (var blxl=0;blxl<cslist.length;blxl++){
+        bljg=bljg+cslist[blxl]+' ';
+        if ((blxl+1)%3==0 && (blxl+1)%9 !== 0){
+            bljg=bljg+'| ';
+        }
+        
+        if (blxl==27 || blxl==54){
+            console.log('---------------------');
+        }        
+        
+        if ((blxl+1) % 9 ==0){
+            console.log(bljg);
+            bljg='';
+        }
+    }
+    if (bljg!==''){
+        console.log(bljg);
+    }
+    console.log('=====================');
+}
 
-	var blys = sudoku_data_global[csnumber];
-	var blarray = blys.split("");
+function reform_sudoku(csstr=''){
+    function sub_reform_sudoku_block(blarray){
+        //block - 从左侧从上到下纵向顺序 - 保留注释
+        var block_list=[];
+        for (var blx=0;blx<3;blx++){
+            for (var bly=0;bly<3;bly++){
+                var arow=[];
+                for (var blrow=0;blrow<3;blrow++){
+                    for (var blcol=0;blcol<3;blcol++){
+                        arow.push(blarray[bly*3*9+blx*3+blrow*9+blcol]);
+                    }
+                }
+                block_list.push(arow);
+            }
+        }
+        return block_list;
+    }
+    //-------------
+    
+    var blarray = csstr.split("");
+    //以下console.log 都保留 - 保留注释
+    console.log(0);
+    console_sudoku(blarray);    
+    //row - 保留注释
+    var row_list=[];
+    for (var blr=0;blr<9;blr++){
+        var arow=[];
+        for (var blc=0;blc<9;blc++){
+            arow.push(blarray[blr*9+blc]);
+        }
+        row_list.push(arow);
+    }
+
+    var row_blocks=[row_list.slice(0,3).sort(randomsort_b),row_list.slice(3,6).sort(randomsort_b),row_list.slice(6,9).sort(randomsort_b)];
+    blarray=[];
+    for (var arowblock of row_blocks){
+        for (var arow of arowblock){
+            for (var anumber of arow){
+                blarray.push(anumber);
+            }
+        }
+    }
+    console.log(1);
+    console_sudoku(blarray);
+
+    //column - 保留注释
+    var col_list=[];
+    for (var blc=0;blc<9;blc++){
+        var acol=[];
+        for (var blr=0;blr<9;blr++){
+            acol.push(blarray[blc+blr*9]);
+        }
+        col_list.push(acol);
+    }
+
+    var col_blocks=[col_list.slice(0,3).sort(randomsort_b),col_list.slice(3,6).sort(randomsort_b),col_list.slice(6,9).sort(randomsort_b)];
+    blarray=[];
+    for (var blr=0;blr<9;blr++){
+        for (var acol3 of col_blocks){
+            for (var acol of acol3){
+                blarray.push(acol[blr]);
+            }
+        }
+    }
+    console.log(2);
+    console_sudoku(blarray);
+    
+    //block
+    block_list=sub_reform_sudoku_block(blarray);
+
+    var col3_blocks=[block_list.slice(0,3),block_list.slice(3,6),block_list.slice(6,9)].sort(randomsort_b);    
+    blarray=[];
+    for (var blr3=0;blr3<3;blr3++){
+        for (var arow=0;arow<3;arow++){
+            for (var acol3 of col3_blocks){
+                for (var blc=arow*3;blc<(arow+1)*3;blc++){
+                    blarray.push(acol3[blr3][blc]);
+                }
+            }
+        }
+    }
+    
+    console.log(3);
+    console_sudoku(blarray);
+    
+    block_list=sub_reform_sudoku_block(blarray);
+    
+    var row3_blocks=[
+    [block_list[0],block_list[3],block_list[6]],
+    [block_list[1],block_list[4],block_list[7]],
+    [block_list[2],block_list[5],block_list[8]],
+    ].sort(randomsort_b);    
+    blarray=[];
+    for (var arow3 of row3_blocks){
+        for (var blx=0;blx<3;blx++){
+            for (var ablock of arow3){
+                for (var blc=blx*3;blc<(blx+1)*3;blc++){
+                    blarray.push(ablock[blc]);
+                }
+            }
+        }
+    }
+
+    console.log(4);
+    console_sudoku(blarray);
+    return blarray;
+}
+
+function show_sudoku(csnumber,csreform=false){
+	if (csnumber < 0 || csnumber > sudoku_data_global.length){return;}
+    if (csnumber == sudoku_data_global.length){
+        var blys='';
+        for (var blxl=1;blxl<=81;blxl++){
+            blys=blys+"0";
+        }
+    }
+    else {
+        var blys = sudoku_data_global[csnumber];
+    }
+    td_no_global='';
+	//var blys = sudoku_data_global[csnumber];
+    if (csreform){
+       var blarray=reform_sudoku(blys); 
+    }
+    else {
+	    var blarray = blys.split("");
+    }
 	var blstr = '<table class="table_sudoku" align=center width=1 border=0 cellspacing="0" cellpadding="0">';
 	var bltmp;
 	var blstyle;
@@ -524,6 +697,8 @@ function show_sudoku(csnumber){
 		if (blxl%9 == 8){blstr = blstr + '</tr>'}
 	}
     blstr=blstr+'<tr><td colspan=9 align=center style="border:0;font-size:'+(font_size_global-0.5)+'rem;">';
+    blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:getvalue_check("+csnumber+")\">检查</a> ";
+    blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:show_sudoku("+csnumber+",true)\">题目变形</a> ";
     blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:fill_sudoku("+csnumber+")\">答案</a>";
     blstr=blstr+'</td></tr>';
     

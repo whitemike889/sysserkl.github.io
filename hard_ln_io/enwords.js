@@ -1,4 +1,10 @@
 var enwords=[
+["incremental", "US [ˌɪŋkrə'ment(ə)l] UK [ˌɪŋkrɪ'ment(ə)l]", "adj. 增加的；【数】增量的；增额的"],
+["increment", "US ['ɪŋkrəmənt] UK ['ɪŋkrɪmənt]", "n. 增量；定期的加薪；增加；增值；增额；a regular increase in the amount of money that somebody is paid for their job; an increase in a number or an amount; a small positive or negative change in a variable or function. Symbol: Δ, as in Δx or Δf"],
+["inactive", "[ɪn'æktɪv]", "adj. 不活动的；停用的；怠惰的；无行动的；不活跃的；未使用的；not doing anything; not active; not in use; not working"],
+["ethics", "['eθɪks]", "n. 道德规范；道德标准；伦理学；道德伦理；伦理标准；the study of what is morally right and what is not"],
+["tailor", "['teɪlə(r)]", "n. （尤指为顾客个别定制男装的）裁缝；a person whose job is to make men’s clothes, especially somebody who makes suits, etc. for individual customers; a person whose occupation is making or altering garments (such as suits, jackets, and dresses) typically to fit a particular person; v. 缝制；调整使适合；做裁缝；专门制作；定做；to make or adapt to suit a special need or purpose; to fit with clothes; to make or prepare something following particular instructions"],
+["sportscaster", "['spɔːrtskæstər]", "n. 担任比赛实况转播或说明的广播员；（电视台或广播电台的）体育节目广播员；a person who introduces and presents a sportscast; a radio or television broadcast of a sports event or of information about sports"],
 ["anthill", "['ænthɪl]", "n. 蚁冢；蚁垤；a pile of soil created by ants when they are making their nests underground"],
 ["adoration", "[ˌædə'reɪʃ(ə)n]", "n. 崇拜；爱慕；敬慕；〈文学〉(对神的)膜拜；a feeling of great love or worship"],
 ["worship", "US ['wɜrˌʃɪp] UK ['wɜː(r)ʃɪp]", "n. 崇拜；礼拜；崇敬；爱慕；the practice of showing respect for God or a god, by saying prayers, singing with others, etc.; a ceremony for this; a strong feeling of love and respect for somebody/something; v. 崇敬；（尤指在宗教场所）做礼拜；到宗教场所参加礼拜；热爱"],
