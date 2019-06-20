@@ -1,4 +1,11 @@
 var enwords=[
+["argument", "US ['ɑrɡjəmənt] UK ['ɑː(r)ɡjʊmənt]", "n. 辩论；论点；论据；争论；理由；观点；争吵；(函数)自变量；a conversation or discussion in which two or more people disagree, often angrily; a reason or set of reasons that somebody uses to show that something is true or correct; an angry quarrel or disagreement; one of the independent variables upon whose value that of a function depends"],
+["astronomy", "英 [ə'strɒnəmi] 美 [ə'strɑːnəmi]", "n. 天文学；the scientific study of the sun, moon, stars, planets, etc.; the study of objects and matter outside the earth's atmosphere and of their physical and chemical properties"],
+["ungrateful", "[ʌn'ɡreɪtf(ə)l]", "adj. 忘恩负义的；不领情的；not showing or expressing thanks for something that somebody has done for you or given to you; showing no gratitude; making a poor return"],
+["puffin", "['pʌfɪn]", "n. 角嘴海雀；a black and white bird with a large, brightly coloured beak that lives near the sea, common in the N Atlantic"],
+["mechanism", "['mekəˌnɪz(ə)m]", "n. 机制；机械装置；结构；机构；方法；原理；机件；a set of moving parts in a machine that performs a task; a method or a system for achieving something; a system of parts in a living thing that together perform a particular function"],
+["oceangoing", "['əʊʃənˌgəʊɪŋ]", "adj. 远洋航行的；行驶外洋的"],
+["unpleasant", "[ʌn'plez(ə)nt]", "adj. 令人不快的；不舒服的；不和蔼的；不客气的；讨厌的；不合意的；不友好的；粗鲁的；not pleasant or comfortable; not kind, friendly or polite; rude and angry; not attractive or enjoyable or easy to like"],
 ["incremental", "US [ˌɪŋkrə'ment(ə)l] UK [ˌɪŋkrɪ'ment(ə)l]", "adj. 增加的；【数】增量的；增额的"],
 ["increment", "US ['ɪŋkrəmənt] UK ['ɪŋkrɪmənt]", "n. 增量；定期的加薪；增加；增值；增额；a regular increase in the amount of money that somebody is paid for their job; an increase in a number or an amount; a small positive or negative change in a variable or function. Symbol: Δ, as in Δx or Δf"],
 ["inactive", "[ɪn'æktɪv]", "adj. 不活动的；停用的；怠惰的；无行动的；不活跃的；未使用的；not doing anything; not active; not in use; not working"],

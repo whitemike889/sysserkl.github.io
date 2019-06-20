@@ -2,23 +2,39 @@ var font_size_global=2.5;
 var empty_global="&nbsp;&nbsp;";
 var td_no_global='';
 var state_count_global=0;
+var current_sudoku_global='';
 
 function sudoku_h2(){
     var oh2=document.getElementById('h2_title');
     if (oh2){
-        oh2.innerHTML='KL Sudoku <span class="fmini" style="font-weight:300;">Ver: 0.0.2-20190615</span> <span id="span_state" class="fmini" style="font-weight:300;"></span>';
+        oh2.innerHTML='KL Sudoku <span style="font-weight:300;font-size:1rem;">Ver: 0.0.3-20190620</span> <span id="span_state" style="font-weight:300;font-size:1rem;"></span>';
     }
     //history
+    //0.0.3-20190620
     //0.0.2-20190615
     //0.0.1-20140111
 }
 
-function tdbackground(csid){
-    if (td_no_global!==''){
-        var otd=document.getElementById(td_no_global);
-        if (otd){
-            otd.style.backgroundColor='white';
+function tdbackground(csid,cstype='samenum'){
+    //恢复原背景色
+    var list_t=current_sudoku_global.split("");
+    for (var blxl=0;blxl<list_t.length;blxl++){
+        var otd=document.getElementById('input_'+blxl);
+        if (list_t[blxl]=='0'){
+            otd.style.backgroundColor='';
         }
+        else {
+            otd.style.backgroundColor='#e0e0e0';
+        }
+    }
+    
+    if (td_no_global!==''){
+        //以下4行暂时保存 - 保留注释
+        //var otd=document.getElementById(td_no_global);
+        //if (otd){
+            //otd.style.backgroundColor='white';
+        //}
+        
         //取消选中 - 保留注释
         if (csid==td_no_global){
             td_no_global='';
@@ -28,7 +44,12 @@ function tdbackground(csid){
     
     var otd=document.getElementById(csid);
     if (otd){
-        otd.style.backgroundColor='tomato';
+        var list_t=related_tds(parseInt(csid.split('_')[1]),cstype);
+        for (var item of list_t){
+            var otemp=document.getElementById('input_'+item);
+            otemp.style.backgroundColor='#FFFF66';
+        }
+        otd.style.backgroundColor='lime';
         td_no_global=csid;
     }
 }
@@ -40,21 +61,52 @@ function inputvalue(csvalue){
             otd.innerHTML=csvalue;
         }
     }
+    inputvalue_color();
 }
-
-function getvalue(csnumber){
-    if (csnumber < 0 || csnumber > sudoku_data_global.length){
-        return [];
+function inputvalue_color(){
+    var otds=document.getElementsByClassName('td_sudoku');
+    var bljg='';
+    for (var item of otds){
+        if (item.innerHTML==empty_global){continue;}
+        bljg=bljg+item.innerHTML;
     }
-    if (csnumber == sudoku_data_global.length){
-        var list_t=[];
-        for (var blxl=1;blxl<=81;blxl++){
-            list_t.push("0");
+    var list_count=[];
+    for (var blxl=0;blxl<9;blxl++){
+        list_count.push(0);
+    }
+    var list_t=bljg.split("");
+    for (var item of list_t){
+        list_count[parseInt(item)-1]=list_count[parseInt(item)-1]+1;
+    }
+    
+    for (var blxl=0;blxl<9;blxl++){
+        var otd=document.getElementById('td_inputvalue'+(blxl+1));
+        if (list_count[blxl]==9){
+            otd.style.color='green';
+        }
+        else if (list_count[blxl]>9){
+            otd.style.color='grey';
+        }
+        else {
+            otd.style.color='';
         }
     }
-    else {
-        var list_t = sudoku_data_global[csnumber].split("");
-    }
+}
+
+function getvalue(){
+    //if (csnumber < 0 || csnumber > sudoku_data_global.length){
+        //return [];
+    //}
+    //if (csnumber == sudoku_data_global.length){
+        //var list_t=[];
+        //for (var blxl=1;blxl<=81;blxl++){
+            //list_t.push("0");
+        //}
+    //}
+    //else {
+        //var list_t = sudoku_data_global[csnumber].split("");
+    //}
+    var list_t=current_sudoku_global.split("");
     for (var blxl=0;blxl<list_t.length;blxl++){
         if (list_t[blxl]=='0'){
             var oinput=document.getElementById('input_'+blxl);
@@ -78,14 +130,16 @@ function one_result(csstr,csno,csvalue){
     list_t[csno]=csvalue;
     var blvalue=check_sudoku(list_t);
     if (blvalue[0]==false){
-        return [];
+        return false;
     }
     var bljg=[];
 
     while (true){
         var result_t=possible_values(list_t);
         var found=false;
-
+        if (result_t.length==0){
+            return false;
+        }
         for (var item of result_t){
             if (item[2].length==1){
                 list_t[item[0]*9+item[1]*1]=item[2][0];
@@ -96,7 +150,7 @@ function one_result(csstr,csno,csvalue){
 
         var blvalue=check_sudoku(list_t);
         if (blvalue[0]==false){
-            return [];
+            return false;
         }
         
         if (found==false){
@@ -106,24 +160,59 @@ function one_result(csstr,csno,csvalue){
     return bljg;
 }
 
-function fill_sudoku(csnumber){
+function fill_sudoku(){
     state_count_global=0;
-    var list_t=getvalue(csnumber);
+    var list_t=getvalue();
     var tmp_t=branchs(list_t.toString());
-    if (tmp_t[0]==false){
-        return tmp_t;
+
+    var testfound=true;
+    while (testfound){
+        //结果判断 - 保留注释
+        if (tmp_t[0]==false){
+            return tmp_t;
+        }
+        if (tmp_t[2].length==0){
+            break;
+        }
+        
+        //空白单元格 - 可选值猜测 - 保留注释
+        for (var item of tmp_t[2]){
+            //console.log(item[0],item[1],item[2]);
+            var foundtrue=0;
+            var thevalue='';
+            for (var avalue of item[2]){
+                tmp_t[1][item[0]*3+item[1]]=avalue;
+                if (branchs(tmp_t[1].toString())[0]){
+                    foundtrue=foundtrue+1;
+                    thevalue=avalue;
+                }
+            }
+            if (foundtrue==1){
+                console.log(state_count_global,'fill',item[0],item[1],thevalue);
+                tmp_t[1][item[0]*3+item[1]]=thevalue;
+                //重定义 tmp_t - 保留注释
+                tmp_t=branchs(tmp_t[1].toString());
+                testfound=true;
+                break;
+            }
+            else {
+                tmp_t[1][item[0]*3+item[1]]="0";
+                testfound=false;
+            }
+        }
     }
-    //console.log(tmp_t[1]);
+    //确定的结果 - 保留注释
     for (var blxl=0;blxl<81;blxl++){
         if (tmp_t[1][blxl]=="0"){continue;}
         var oinput=document.getElementById('input_'+blxl);
         if (oinput){
-            oinput.innerHTML=tmp_t[1][blxl];
+            if (oinput.innerHTML==empty_global){
+                oinput.innerHTML=tmp_t[1][blxl];
+                oinput.style.color="red";
+            }
         }
     }
-    for (var item of tmp_t[2]){
-        console.log(item[0],item[1],item[2]);
-    }
+
     document.getElementById('span_state').innerHTML='调用 branchs(): '+state_count_global+' 次';
 }
 
@@ -189,13 +278,12 @@ function branchs(csstr,do_select_value=true){
     while (true){
         var blvalue=check_sudoku(list_t);
         if (blvalue[0]==false){
-            console.log(state_count_global,0,blvalue);
+            console.log(state_count_global,'0',blvalue);
             document.getElementById('span_state').innerHTML='<font color="red">✘</font>: '+blvalue[1];
             return blvalue;
         }
         
         var result_t=possible_values(list_t);
-
         var found=false;
 
         //row 唯一 - 保留注释
@@ -307,19 +395,25 @@ function branchs(csstr,do_select_value=true){
         
         console.log(state_count_global,'2.2');
         for (var item of result_t){
-            if (item[2].length==2){
-                var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
-                var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
-                if (value1.length<1 || value2.length<1){continue;}
-                for (var array1 of value1){
-                    for (var array2 of value2){
-                        if (array1[0]==array2[0] && array1[1]==array2[1]){
-                            list_t[array1[0]]=array1[1];
-                            found=true;
-                        }
+            if (item[2].length!==2){
+                continue;
+            }
+            
+            var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
+            var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
+            if (value1==false || value2==false){
+                continue;
+            }
+            if (value1.length<1 || value2.length<1){continue;}
+
+            for (var array1 of value1){
+                for (var array2 of value2){
+                    if (array1[0]==array2[0] && array1[1]==array2[1]){
+                        list_t[array1[0]]=array1[1];
+                        found=true;
                     }
                 }
-            }
+            }            
         }
         
         if (found){
@@ -328,22 +422,29 @@ function branchs(csstr,do_select_value=true){
         
         console.log(state_count_global,'2.3');
         for (var item of result_t){
-            if (item[2].length==3){
-                var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
-                var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
-                var value3=one_result(list_t.toString(),item[0]*9+item[1],item[2][2]);
-                if (value1.length<1 || value2.length<1 || value3.length<1){continue;}
-                for (var array1 of value1){
-                    for (var array2 of value2){
-                        for (var array3 of value3){
-                            if (array1[0]==array2[0] && array1[0]==array3[0] && array1[1]==array2[1] && array1[1]==array3[1]){
-                                list_t[array1[0]]=array1[1];
-                                found=true;
-                            }
+            if (item[2].length!==3){
+                continue;
+            }
+            
+            var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
+            var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
+            var value3=one_result(list_t.toString(),item[0]*9+item[1],item[2][2]);
+            
+            if (value1==false || value2==false || value3==false){
+                continue;
+            }
+            if (value1.length<1 || value2.length<1 || value3.length<1){continue;}
+
+            for (var array1 of value1){
+                for (var array2 of value2){
+                    for (var array3 of value3){
+                        if (array1[0]==array2[0] && array1[0]==array3[0] && array1[1]==array2[1] && array1[1]==array3[1]){
+                            list_t[array1[0]]=array1[1];
+                            found=true;
                         }
                     }
                 }
-            }
+            }            
         }
         
         if (found){
@@ -352,17 +453,59 @@ function branchs(csstr,do_select_value=true){
         
         console.log(state_count_global,'2.4');
         for (var item of result_t){
-            if (item[2].length==4){
-                var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
-                var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
-                var value3=one_result(list_t.toString(),item[0]*9+item[1],item[2][2]);
-                var value4=one_result(list_t.toString(),item[0]*9+item[1],item[2][3]);
-                if (value1.length<1 || value2.length<1 || value3.length<1 || value4.length<1){continue;}
-                for (var array1 of value1){
-                    for (var array2 of value2){
-                        for (var array3 of value3){
-                            for (var array4 of value4){
-                                if (array1[0]==array2[0] && array1[0]==array3[0] && array1[0]==array4[0] && array1[1]==array2[1] && array1[1]==array3[1] && array1[1]==array4[1]){
+            if (item[2].length!==4){
+                continue;
+            }
+            
+            var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
+            var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
+            var value3=one_result(list_t.toString(),item[0]*9+item[1],item[2][2]);
+            var value4=one_result(list_t.toString(),item[0]*9+item[1],item[2][3]);
+
+            if (value1==false || value2==false || value3==false || value4==false){continue;}
+            
+            if (value1.length<1 || value2.length<1 || value3.length<1 || value4.length<1){continue;}
+
+            for (var array1 of value1){
+                for (var array2 of value2){
+                    for (var array3 of value3){
+                        for (var array4 of value4){
+                            if (array1[0]==array2[0] && array1[0]==array3[0] && array1[0]==array4[0] && array1[1]==array2[1] && array1[1]==array3[1] && array1[1]==array4[1]){
+                                list_t[array1[0]]=array1[1];
+                                found=true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (found){
+            continue;
+        }
+
+        console.log(state_count_global,'2.5');
+        for (var item of result_t){
+            if (item[2].length!==5){
+                continue;
+            }
+            
+            var value1=one_result(list_t.toString(),item[0]*9+item[1],item[2][0]);
+            var value2=one_result(list_t.toString(),item[0]*9+item[1],item[2][1]);
+            var value3=one_result(list_t.toString(),item[0]*9+item[1],item[2][2]);
+            var value4=one_result(list_t.toString(),item[0]*9+item[1],item[2][3]);
+            var value5=one_result(list_t.toString(),item[0]*9+item[1],item[2][4]);
+
+            if (value1==false || value2==false || value3==false || value4==false || value5==false){continue;}
+            
+            if (value1.length<1 || value2.length<1 || value3.length<1 || value4.length<1 || value5.length<1){continue;}
+
+            for (var array1 of value1){
+                for (var array2 of value2){
+                    for (var array3 of value3){
+                        for (var array4 of value4){
+                            for (var array5 of value5){
+                                if (array1[0]==array2[0] && array1[0]==array3[0] && array1[0]==array4[0] && array1[0]==array5[0] && array1[1]==array2[1] && array1[1]==array3[1] && array1[1]==array4[1] && array1[1]==array5[1]){
                                     list_t[array1[0]]=array1[1];
                                     found=true;
                                 }
@@ -376,7 +519,7 @@ function branchs(csstr,do_select_value=true){
         if (found){
             continue;
         }
-
+        
         //select_value
         if (do_select_value){
             console.log(state_count_global,'3.2');
@@ -436,8 +579,8 @@ function branchs(csstr,do_select_value=true){
     return [true,list_t,result_t];
 }
 
-function getvalue_check(csnumber){
-    var list_t=getvalue(csnumber);
+function getvalue_check(){
+    var list_t=getvalue();
     var bljg=check_sudoku(list_t);
     if (bljg[0]){
         document.getElementById('span_state').innerHTML='<font color="blue">✔</font>';
@@ -445,6 +588,66 @@ function getvalue_check(csnumber){
     else {
         document.getElementById('span_state').innerHTML='<font color="red">✘</font>: '+bljg[1];
     }
+}
+
+function related_tds(csnumber,cstype=''){
+    //cstype samenum onlysamenum
+    var list_t=[];
+    if (cstype!=='onlysamenum'){
+        var blrow=Math.ceil((csnumber+1)/9)-1;
+        var blcol=(csnumber+1)%9;
+        if (blcol==0){blcol=9;}
+        blcol=blcol-1;
+        
+        
+        for (var blxl=0;blxl<9;blxl++){
+            list_t.push(blrow*9+blxl);
+            list_t.push(blcol+blxl*9);
+        }
+       
+        if (blrow<3){
+            var blockx=0;
+        }
+        else if (blrow<6){
+            var blockx=3;
+        }
+        else {
+            var blockx=6;
+        }
+        
+        if (blcol<3){
+            var blocky=0;
+        }
+        else if (blcol<6){
+            var blocky=3;
+        }
+        else {
+            var blocky=6;
+        }
+        
+        var blocks=[];
+        for (var blx=0;blx<3;blx++){
+            for (var bly=0;bly<3;bly++){
+                list_t.push(bly*9+blx+blockx*9+blocky);
+            }
+        }
+    }
+
+    if (cstype=='samenum' || cstype=='onlysamenum'){
+        var blvalue=document.getElementById('input_'+csnumber).innerHTML;
+        //console.log(blvalue);
+        if (blvalue!==empty_global){
+            var otds=document.getElementsByClassName('td_sudoku');
+            for (var item of otds){
+                if (item.innerHTML==blvalue){
+                    list_t.push(parseInt(item.id.split('_')[1]));
+                }
+            }
+        }
+    }
+    
+    list_t.sort(function (a,b){return a-b;});
+    return array_unique_b(list_t);
 }
 
 function check_sudoku(list_t){
@@ -659,18 +862,27 @@ function show_sudoku(csnumber,csreform=false){
     else {
         var blys = sudoku_data_global[csnumber];
     }
+
     td_no_global='';
 	//var blys = sudoku_data_global[csnumber];
     if (csreform){
        var blarray=reform_sudoku(blys); 
+       current_sudoku_global='';
+       for (var item of blarray){
+            current_sudoku_global=current_sudoku_global+item;
+        }
     }
     else {
 	    var blarray = blys.split("");
+        current_sudoku_global=blys;
     }
 	var blstr = '<table class="table_sudoku" align=center width=1 border=0 cellspacing="0" cellpadding="0">';
 	var bltmp;
 	var blstyle;
     var border_style="0.1rem black solid;";
+    
+    //初始化背景色数组 - 保留注释
+    
 	for (var blxl in blarray){
 		if (blxl%9 == 0){blstr = blstr + '<tr>';}
 		bltmp = blarray[blxl];
@@ -689,25 +901,26 @@ function show_sudoku(csnumber,csreform=false){
 			blstyle = blstyle + "border-right:"+border_style;
 		}
         if (blarray[blxl]!=="0"){
-            blstr = blstr + '<td width=1 nowrap align=center style="'+blstyle+'background-color:#e0e0e0;">'+bltmp+'</td>';
+            blstr = blstr + '<td class="td_sudoku" width=1 id="input_'+blxl+'" nowrap align=center style="'+blstyle+'background-color:#e0e0e0;" onclick="javascript:tdbackground(this.id,\'onlysamenum\');">'+bltmp+'</td>';
         }
         else {
-		    blstr = blstr + '<td width=1 id="input_'+blxl+'" nowrap align=center style="'+blstyle+'color:blue;" onclick="javascript:tdbackground(this.id);">'+bltmp+'</td>';
+		    blstr = blstr + '<td class="td_sudoku"  width=1 id="input_'+blxl+'" nowrap align=center style="'+blstyle+'color:blue;" onclick="javascript:tdbackground(this.id);">'+bltmp+'</td>';
         }
 		if (blxl%9 == 8){blstr = blstr + '</tr>'}
 	}
     blstr=blstr+'<tr><td colspan=9 align=center style="border:0;font-size:'+(font_size_global-0.5)+'rem;">';
-    blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:getvalue_check("+csnumber+")\">检查</a> ";
+    blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:getvalue_check()\">检查</a> ";
     blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:show_sudoku("+csnumber+",true)\">题目变形</a> ";
-    blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:fill_sudoku("+csnumber+")\">答案</a>";
+    blstr=blstr + "<a href=\"javascript:void(null);\" onclick=\"javascript:fill_sudoku()\">答案</a>";
     blstr=blstr+'</td></tr>';
     
     blstr=blstr+'<tr><td colspan=9 style="border:0;">';
     blstr=blstr+'<table width=100% border=0 cellspacing="0" cellpadding="0" class="table_select"><tr>';
     
+    //录入条 - 保留注释
     blstr=blstr+'<td align=center onclick="javascript:inputvalue(empty_global);">↪️</td>';
     for (var blxl=1;blxl<=9;blxl++){
-        blstr=blstr+'<td align=center onclick="javascript:inputvalue(this.innerHTML);">'+blxl+'</td>';
+        blstr=blstr+'<td align=center onclick="javascript:inputvalue(this.innerHTML);" id="td_inputvalue'+blxl+'">'+blxl+'</td>';
     }
     blstr=blstr+'</tr></table>';    
     blstr=blstr+'</td></tr>';
@@ -717,6 +930,7 @@ function show_sudoku(csnumber,csreform=false){
 	var bldiv = document.getElementById("klsudoku");
 	bldiv.innerHTML = blstr;
     document.getElementById('span_state').innerHTML='';
+    inputvalue_color();
 }
 
 function sudoku_style(){
