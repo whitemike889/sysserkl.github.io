@@ -1,4 +1,8 @@
 var enwords=[
+["state", "[steɪt]", "n. 情形；状态；国家；州；政府；adj. 国家的；州的；邦的；国事礼仪的；v. 陈述；声明；说明；规定"],
+["musket", "US ['mʌskət] UK ['mʌskɪt]", "n. 毛瑟枪；滑膛枪；a gun with a long barrel, used in the past"],
+["individually", "[ˌɪndɪ'vɪdʒuəli]", "adv. 个别地；单独地；独特地；分别地；separately, rather than as a group"],
+["Mississippi", "[ˌmɪsɪ'sɪpi]", "n. 密西西比(美国州名)；n. 密西西比河(美国河流名)"],
 ["unspoken", "[ʌn'spəʊk(ə)n]", "adj. 未表达的；默契的；心照不宣的；未说出口的；不言而喻的；not stated; not said in words but understood or agreed between people; v. unspeak的过去分词"],
 ["shallow", "['ʃæləʊ]", "adj. 浅的；薄的；肤浅的；浅薄的；（呼吸）浅的；not having much distance between the top or surface and the bottom; not showing serious thought, feelings, etc. about something; having little depth; lacking in depth of knowledge, thought, or feeling; displacing comparatively little air; n. 浅滩；浅处；v. (使)变浅；(使)变浅薄"],
 ["clan", "[klæn]", "n. 氏族；宗族；党派；家族；宗派；帮派；a group of families who are related to each other, especially in Scotland; a very large family, or a group of people who are connected because of a particular thing; a group of people tracing descent from a common ancestor; a group united by a common interest or common characteristics"],
@@ -35,7 +39,7 @@ var enwords=[
 ["medieval", "[ˌmedi'iːv(ə)l]", "adj. 中世纪的（约公元 1000 到 1450 年）"],
 ["observer", "[əb'zɜːrvər]", "n. 观察者；观察员；观察家；观测者；a representative sent to observe but not participate officially in an activity (such as a meeting or war); an expert analyst and commentator in a particular field; a person who watches and studies particular events, situations, etc. and is therefore considered to be an expert on them; a person who watches what happens but has no active part in it"],
 ["thermonuclear", "英 [ˌθɜːməʊ'njuːkliə(r)] 美 [ˌθɜːrmoʊ'nuːkliər]", "adj. 热核的"],
-["jurisdiction", "US [ˌdʒʊrɪs'dɪkʃ(ə)n] UK [ˌdʒʊərɪs'dɪkʃ(ə)n]", "n. 管辖权；司法权；审判权；管辖范围；控制权；"],
+["jurisdiction", "US [ˌdʒʊrɪs'dɪkʃ(ə)n] UK [ˌdʒʊərɪs'dɪkʃ(ə)n]", "n. 管辖权；司法权；审判权；管辖范围；控制权"],
 ["newsgathering", "[njuːz'ɡæthərɪŋ]", "n. 新闻收集；（尤指电视或报纸的）新闻采集；the process of doing research on news items, especially ones that will be broadcast on television or printed in a newspaper"],
 ["Colorado", "英 [ˌkɒlə'rɑːdəʊ] 美 [ˌkɑːlə'rædoʊˌ -'rɑːdoʊ]", "n. 科罗拉多(州)；科罗拉多河"],
 ["tarot", "US ['teroʊ] UK ['tærəʊ]", "n.塔罗纸牌（用于占卜）；a set of special cards with pictures on them, used for telling somebody what will happen to them in the future; any of a set of usually 78 playing cards including 22 pictorial cards used for fortune-telling"],
