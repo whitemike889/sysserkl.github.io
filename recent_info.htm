@@ -61,7 +61,6 @@ document.write('\n<SCRIPT language=JavaScript src="learning_links/learning_links
 </script>
 <style>
 img{max-width:100%;}
-.mini{font-size:0.75rem;margin:0px;padding:1px 0px 1px 0px;}
 a{text-decoration:none;}
 div.link_title{margin: 1.5rem 2.5rem 1.5rem 1.5rem;font-size:1.9rem;padding:1.5rem; border:0.1rem solid #c0c0c0;-webkit-border-radius: 1rem; -webkit-box-shadow: 0.3rem 0.3rem 0.3rem #c0c0c0;word-break:break-all;word-wrap:break-word;}
 section.code{overflow:auto;padding:1rem;border:0.1rem solid #c0c0c0;-webkit-border-radius: 1rem;max-height:30rem;background-color: #2e3436;line-height:140%;}
@@ -149,7 +148,7 @@ function rndwords(){
         var bljg='';
         var blxl=0;
         for (var item of enwords){
-            bljg=bljg+'* <a href="http://dict.cn/'+item[0]+'" target=_blank style="color:blue;font-weight:600;text-decoration:underline;">'+item[0]+'</a> '+item[1]+' '+item[2]+'\n';
+            bljg=bljg+'* <a href="http://dict.cn/'+item[0]+'" target=_blank style="color:blue;font-weight:600;text-decoration:underline;font-size:1.2rem;">'+item[0]+'</a> '+item[1]+' '+item[2]+'\n';
             blxl=blxl+1;
             if (blxl>=5){break;}
         }
@@ -168,7 +167,7 @@ function title_history(){
         }
         bljg=bljg+title_href(['',str_t]);
     }
-    document.getElementById('divhtml').innerHTML=bljg+'<p align=center class=mini>('+recent_info_title_global.length+')</p>';    
+    document.getElementById('divhtml').innerHTML=bljg+'<p align=center>('+recent_info_title_global.length+')</p>';    
 }
 
 function title_href(item,csidname=''){

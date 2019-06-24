@@ -1,4 +1,9 @@
 var enwords=[
+["Hudson", "US [ˈhʌdsən] UK [ˈhʌdsn]", "n. 赫德森；哈得孙；哈德孙河"],
+["carter", "['kɑːtə]", "n. 卡特；赶(运货)马车的人；运货马车夫"],
+["carol", "['kærəl]", "n. 颂歌（尤指圣诞颂歌）；欢乐的歌；〔诗〕鸟的啼啭；卡罗尔（人名）；a Christian religious song sung at Christmas; an old round dance with singing; v. 欢唱；挨家挨户地唱圣诞歌；to sing carols, esp. by going from house to house"],
+["highlight", "['haɪlaɪt]", "vt. 强调；照亮；加亮；使 ... 显得重要；使突出；将（文本的某部分）用彩笔做标记；to emphasize something, especially so that people give it more attention; to mark part of a text with a special coloured pen, or to mark an area on a computer screen, to emphasize it or make it easier to see; to make some parts of your hair a lighter colour than the rest by using a chemical substance on them; n. 加亮区；精彩部分；最重要的细节或事件；闪光点；[计算机] 醒目；挑染的头发"],
+["rethink", "[ˌriː'θɪŋk]", "v. 再想；再考虑；重新考虑；to think about again; n. 再思考；反思；an act of thinking again about an idea, a course of action, etc, especially in order to change it"],
 ["state", "[steɪt]", "n. 情形；状态；国家；州；政府；adj. 国家的；州的；邦的；国事礼仪的；v. 陈述；声明；说明；规定"],
 ["musket", "US ['mʌskət] UK ['mʌskɪt]", "n. 毛瑟枪；滑膛枪；a gun with a long barrel, used in the past"],
 ["individually", "[ˌɪndɪ'vɪdʒuəli]", "adv. 个别地；单独地；独特地；分别地；separately, rather than as a group"],
