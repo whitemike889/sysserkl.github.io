@@ -183,4 +183,47 @@ var recent_info_list=[
 ["https://www.iflscience.com/health-and-medicine/smartphones-might-be-having-a-bizarre-effect-on-your-skull/","Smartphones Might Be Having A Bizarre Effect On Your Skull | IFLScience"],
 ["https://www.thehour.cn/news/283374.html","江景房变树景房，树要不要修大家意见不一致，杭州老牌高档小区为1400棵树发愁"],
 ["https://ori.hangzhou.com.cn/ornews/content/2019-06/24/content_7215790.htm","单程32分钟！杭州地铁5号线首通段下午3点开通 - 杭网原创 - 杭州网"],
+["http://i.jandan.net/2019/06/23/baking-soda.html","出门野营时，请务必带上小苏打"],
+["http://i.jandan.net/2019/06/23/polish-donkey.html","中国玩家给游戏公司起的外号"],
+["http://js.zjol.com.cn/ycxw_zxtf/201906/t20190622_10391898_ext.shtml","浙江水果价格同比涨幅创12年新高！这么贵是有原因的_手机浙江网"],
+["http://news.sciencenet.cn/htmlnews/2019/6/427684.shtm","做独一无二的自己 颜宁西湖大学问答全记录—新闻—科学网"],
+["http://www.srrsh.com/article/3933.html","钱江晚报 小小一根鸡骨头卡喉咙，竟让她差点瘫痪！ - 浙江大学医学院附属邵逸夫医院--我国首家通过JCI认证的公立医院"],
+["https://m.slashdot.org/story/357422","Raspberry Pi 4 Featuring Faster CPU, Up To 4GB of RAM Launched - Slashdot"],
+["https://m.thepaper.cn/newsDetail_forward_3700095","宦官领兵：明朝历史中神秘难解的现象_私家历史_澎湃新闻"],
+["https://m.thepaper.cn/newsDetail_forward_3756069","深夜街头一女孩遭男子殴打扒衣拖行，绵阳网警介入调查征线索_直击现场_澎湃新闻"],
+["https://m.tmtpost.com/4024677.html","波司登遭Bonitas Research做空狙击，股价闪崩后停牌-钛媒体官方网站"],
+["https://m.weibo.cn/status/HAghIlnCc?jumpfrom=weibocom","#天气# 【云南元江出现创纪录夜温，空前热浪即将结束】 - 中国气象爱好者 - 微博"],
+["https://www.abacusnews.com/digital-life/dumb-polish-donkey-old-nin-chinese-nicknames-gaming-companies/article/3014876","From The Dumb Polish Donkey to Old Nin: Chinese nicknames for gaming companies | Abacus"],
+["https://www.cnbeta.com/articles/tech/860125.htm","第一次下穿黄河 兰州地铁1号线正式开通 - IT 与交通 - cnBeta.COM"],
+["https://www.raspberrypi.org/blog/raspberry-pi-4-on-sale-now-from-35/","Raspberry Pi 4 on sale now from $35 - Raspberry Pi"],
+["https://www.solidot.org/story?sid=34988","Solidot | 中国镉污染问题严重"],
+["https://www.solidot.org/story?sid=61097","[置顶]Solidot | Raspberry Pi 4 发布"],
+["https://www.solidot.org/story?sid=61101","Solidot | 科学家发现与鼻咽癌相关的病毒亚型"],
+["https://www.treehugger.com/travel/6-ways-use-baking-soda-while-camping.html","Why you should take baking soda on your next camping trip | TreeHugger"],
+//-
+["https://cn.nytimes.com/asia-pacific/20190625/thailand-rosewood-poaching/","20190625 | BEN C. SOLOMON, RICHARD C. PADDOCK: 红木在中国受热捧，泰国森林遭遇“血色”盗伐 - 纽约时报中文网",`
+泰国东南部的达帕雅国家公园(Ta Phraya National Park)位于一处联合国教科文组织世界遗产内，这里的丛林生活着马来熊、鳄鱼和大象。但这些偷猎者觊觎的并非动物。他们要寻找的是一棵完美的树，若是找到了，他们会迅速将其砍倒，几个小时的工夫就把它切成木板。
+<br />他们的目标是红木，在中国，这种木材可以卖到数万美元，因而有了一个不光彩的外号：“血木”。
+<br />支持巡护员打击偷伐行为的非政府组织自由家园基金会(Freeland Foundation)的官员说，盗伐者大多是柬埔寨人，他们通过星形标志告知彼此的存在。
+<br />柬埔寨人偷偷穿过管理松懈的丛林边境进入公园，平时就睡在丛林里，随身带着几袋大米、电池驱动的带锯，有时还带着老旧的中国产突击步枪。
+<br />另一边是巡护员。他们接受过森林追踪的训练，在近230平方英里的森林中寻找线索擒获盗伐者。
+<br />这是一份危险的工作。据国际巡护员联盟(International Rangers Federation)的统计，自2009年以来，泰国已有数十名巡护员丧生；该组织称，至少有6人是被盗伐者杀害的。
+<br />生长缓慢的红木稀缺而昂贵，东南亚的大部分地区都在为保护它而战，越南和柬埔寨是著名的砍伐中心，老挝去年刚刚立法首次正式限制红木采伐。
+<br />泰国是该地区唯一剩余大量红木的国家。雷德福说，在过去三个月里，跨境盗伐树木的行为突然出现激增。
+<br />一千多年来，该地区的香红木一直被用来为中国的达官显贵制作家具。中国对泰国木材的需求从2010年开始剧增。有繁复装饰的家具——一种对古代王朝的回归——开始流行使用这种材料，成为中国新贵的地位象征。
+<br />传统上，泰国人很少采伐红木，他们认为树里住着森林精灵，用红木搭建房屋会招惹里面的精灵和霉运。
+<br />但雷德福说，9年前这种木材的需求开始激增，于是一些泰国人带着柬埔寨盗伐者进入森林，帮他们找到有价值的树木。
+<br />直到大约3年前，配备GPS的泰国向导进入森林，指出一棵大的红木树，能挣1000美元。
+<br />如今，柬埔寨盗伐者已熟悉森林里的路，不再需要当地人的帮助。
+<br />他们的策略也改善了。他们不再连续几星期在森林里露宿，而是一伙人先进去，把一棵树迅速加工成木料。另一伙人则在夜间潜入，在天亮前把木料搬运走。
+<br />暹罗红木质地密实、色泽深沉。一名巡护员说，它的纹理长而深，红得像泰国的夕阳。
+<br />在值得砍伐的树中，树龄较小的为60年左右，最老的约有200年。
+<br />盗伐者一般一车木料能赚150美元至200美元，而在中国可能能卖到几万美元。一整棵成龄树价值可达30万美元。
+<br />自由家园组织的官员表示，配上表明是合法采伐的假文件，再通过贿赂把木头运过国界，这样一来，红木就可以在中国买卖了。
+<br />“所有红木里可能有大约2%是合法获得的，”雷德福说。
+<br />巡逻队里一个人称“抹恩”(Maung)的男子以前是个红木盗伐者，现改作巡护员。被捕入狱六个月后，他说想利用自己的盗伐技能知识，让森林变得更好，而不是任由这个问题发展下去。
+<br />他还负责一个志愿组织，带着孩子们进森林，向他们传授树木的知识。
+<br />“从今天起，我再也不会放弃这个工作，”抹恩说。“会一直做到我死。我想教下一代学习爱护森林。这样他们就会懂得不去毁坏它。”
+`],
+//-
 ];

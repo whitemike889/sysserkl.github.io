@@ -1,4 +1,9 @@
 var enwords=[
+["reorganization", "US [riˌɔrɡənɪ'zeɪʃ(ə)n] [riˌɔːrɡənəˈzeɪʃn] UK [riˌɔːɡənaɪ'zeɪʃ(ə)n]", "n. 改组；整顿；再组织；整理活动；再编制；改造；the act of organizing something again in order to improve it; the act or process of changing the way in which something is organized or done"],
+["dentist", "['dentɪst]", "n. 牙科医生；牙医；a person whose job is to take care of people's teeth; one who is skilled in and licensed to practice the prevention, diagnosis, and treatment of diseases, injuries, and malformations of the teeth, jaws, and mouth and who makes and inserts false teeth"],
+["ideological", "US [ˌɪdiə'lɑːdʒɪk(ə)l] [ˌaɪdiəˈlɑːdʒɪk(ə)l] UK [ˌaɪdiə'lɒdʒɪk(ə)l]", "adj. 思想(体系)上的；意识形态的；based on or relating to a particular set of ideas or beliefs"],
+["monotone", "英 ['mɒnətəʊn] 美 ['mɑːnətoʊn]", "n. (说话或唱歌)单调；(颜色、文体等的)单调；单调乏味；单调音；a dull sound or way of speaking in which the tone and volume remain the same and therefore seem boring; a single unvaried musical tone; a sound that stays on the same note without going higher or lower; adj. 单调音的；(颜色、文体等的)单调的；无变化的；having a uniform color"],
+["append", "[ə'pend]", "vt. 附加；添加；增补；to add something to the end of a piece of writing; to add something to a document"],
 ["Hudson", "US [ˈhʌdsən] UK [ˈhʌdsn]", "n. 赫德森；哈得孙；哈德孙河"],
 ["carter", "['kɑːtə]", "n. 卡特；赶(运货)马车的人；运货马车夫"],
 ["carol", "['kærəl]", "n. 颂歌（尤指圣诞颂歌）；欢乐的歌；〔诗〕鸟的啼啭；卡罗尔（人名）；a Christian religious song sung at Christmas; an old round dance with singing; v. 欢唱；挨家挨户地唱圣诞歌；to sing carols, esp. by going from house to house"],
