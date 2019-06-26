@@ -185,3 +185,12 @@ function top_bottom_arrow_b(idname,cseng=false){
         odiv.style.cssText='position:fixed; bottom:0%; right:0%; z-index:9999; color:black; font-size:'+fszie_t+';padding:0 0.5rem; margin:0;background-color:#c0c0c0;opacity:0.4;font-weight:600;';
     }
 }
+
+function rndcolor_b() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+	color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}

@@ -1,4 +1,9 @@
 var enwords=[
+["cosmetic", "英 [kɒz'metɪk] 美 [kɑːz'metɪk]", "adj. 化妆用的；整容的；表面的；装门面的；n. 化妆品；美容品；a substance that you put on your face or body to make it more attractive"],
+["substance", "['sʌbstəns]", "n. 实质；物质；财产；内容；重要性；主旨；物品；a type of solid, liquid or gas that has particular qualities; the quality of being based on facts or the truth; the most important or main part of something; importance"],
+["wear", "英 [weə(r)] 美 [wer]", "v. 磨损；穿戴；穿；戴；佩戴；留（发、须等）；使疲劳；to have something on your body as a piece of clothing, a decoration, etc. ; to have your hair in a particular style; to have a beard or moustache; to have a particular expression on your face; to become, or make something become thinner, smoother or weaker through continuous use or rubbing; to make a hole, path, etc. in something by continuous use or rubbing; n. 磨损；穿着；耐久性；（尤用于商店）…时穿的衣服；衣着；穿戴"],
+["mermaid", "['mɜː(r)ˌmeɪd]", "n.（传说中的）美人鱼；a fabled marine creature with the head and upper body of a woman and the tail of a fish; (in stories) a creature with a woman’s head and body, and a fish’s tail instead of legs"],
+["oceanic", "[ˌəʊʃi'ænɪk]", "adj. 海洋的；大海的；与海洋有关的；海洋产出的；无垠的"],
 ["reorganization", "US [riˌɔrɡənɪ'zeɪʃ(ə)n] [riˌɔːrɡənəˈzeɪʃn] UK [riˌɔːɡənaɪ'zeɪʃ(ə)n]", "n. 改组；整顿；再组织；整理活动；再编制；改造；the act of organizing something again in order to improve it; the act or process of changing the way in which something is organized or done"],
 ["dentist", "['dentɪst]", "n. 牙科医生；牙医；a person whose job is to take care of people's teeth; one who is skilled in and licensed to practice the prevention, diagnosis, and treatment of diseases, injuries, and malformations of the teeth, jaws, and mouth and who makes and inserts false teeth"],
 ["ideological", "US [ˌɪdiə'lɑːdʒɪk(ə)l] [ˌaɪdiəˈlɑːdʒɪk(ə)l] UK [ˌaɪdiə'lɒdʒɪk(ə)l]", "adj. 思想(体系)上的；意识形态的；based on or relating to a particular set of ideas or beliefs"],
@@ -1870,7 +1875,7 @@ var enwords=[
 ['pee', '[piː]', 'n. 小便；vi. 小便'],
 ['postal', "['pəʊst(ə)l]", 'adj.邮政的；邮递的；邮寄物品的；邮寄的；n.〈美口〉明信片'],
 ['courtroom', "['kɔːrtruːm]", 'n. 法庭；审判室'],
-['sadly', "['sædli]", 'adv. 悲哀地；遗憾的是；[口]极为'],
+['sadly', "['sædli]", 'adv. 悲哀地；遗憾的是；[口]极为；unfortunately; in a sad way; very much and in a way that makes you sad'],
 ['incestuous', "英 [ɪn'sestjuəs] 美 [ɪn'sestʃuəs]", 'adj. 乱伦的；犯乱伦罪的；排外的'],
 ['governor', "['ɡʌvərnər]", 'n. 统治者；管理者；理事；州长；总督；调节器'],
 ['honest', "英 ['ɒnɪst] 美 ['ɑːnɪst]", 'adj. 诚实的；正直的；坦率的'],

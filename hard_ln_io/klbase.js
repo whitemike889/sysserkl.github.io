@@ -189,15 +189,6 @@ function mobile_b(csstr1,csstr2){
 	}
 }
 
-function getRandomColor_b() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-	color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 function search_r_key_b(inputid,checkboxid,csstr){
     var isreg=false;
     if (csstr.slice(-4)=='(:r)'){

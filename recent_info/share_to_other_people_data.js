@@ -226,4 +226,22 @@ var recent_info_list=[
 <br />“从今天起，我再也不会放弃这个工作，”抹恩说。“会一直做到我死。我想教下一代学习爱护森林。这样他们就会懂得不去毁坏它。”
 `],
 //-
+["http://blog.sciencenet.cn/blog-347754-1186595.html","科学网—铁人三项运动曾伴我走出人生低谷 - 严家新的博文"],
+["http://i.jandan.net/2019/06/24/indian-city.html","印第6大城市已将周边和地下水源消耗殆尽"],
+["http://m.aisixiang.com/data/116844.html","苏力：何为制度？因何发生(或未发生)？_爱思想"],
+["http://m.aisixiang.com/data/116852.html","冯天瑜：协力共创现代语文——“日本新语入华”考析_爱思想"],
+["https://blog.icook.tw/posts/133629?utm_medium=list1","【飲食辭典】阿特金斯飲食法（The Atkins Diet） | 愛料理生活誌"],
+["https://m.expreview.com/69091.html","树莓派4单板计算机正式发布：四核Cortex-A72性能大提升，售价240元起 超能网"],
+["https://m.weibo.cn/status/HAnggjm9E?jumpfrom=weibocom","【1958年的日本风情】 - 于双子鱼 - 微博"],
+["https://m.weibo.cn/status/HApCxikPx?jumpfrom=weibocom","#天气# 【速报】 - 中国气象爱好者 - 微博"],
+["https://my.oschina.net/u/4007037/blog/3063882","Linux三剑客之awk详解 - 宜信技术学院的个人空间 - OSCHINA"],
+["https://opensource.com/article/19/6/raspberry-pi-4","Announcing the Raspberry Pi 4 | Opensource.com"],
+["https://www.cnbeta.com/articles/tech/859553.htm","统计显示美国主导全球芯片产业市场份额超50% 国产份额仅3% - 硬件 - cnBeta.COM"],
+["https://www.cnblogs.com/Se7eN-HOU/p/11079526.html","python算法与数据结构-希尔排序(35) - Se7eN_HOU - 博客园"],
+["https://www.cnblogs.com/Se7eN-HOU/p/11080596.html","python算法与数据结构-快速排序(36) - Se7eN_HOU - 博客园"],
+["https://www.cool3c.com/article/145300","Raspberry Pi 4開發板更新 35美元起跳價格銷售 將提供專屬外殼配件 (145300) - 癮科技 Cool3c"],
+["https://www.pingwest.com/a/190166","中国游戏商为什么做不出好的三国游戏？-PingWest 品玩"],
+["https://www.sciencealert.com/this-indian-city-has-all-but-run-out-of-water-and-no-one-is-talking-about-it","A Major Indian City Has Nearly Run Out of Water, And No One Is Talking About It"],
+["https://www.tomshardware.com/reviews/raspberry-pi-4-b,6193.html","Raspberry Pi 4 Review: The New Gold Standard for Single-Board Computing - Tom's Hardware"],
+["https://www.vulture.com/2019/06/taylor-swift-you-need-to-calm-down-video-easter-eggs.html","Taylor Swift ‘You Need to Calm Down’ Video Easter Eggs"],
 ];
